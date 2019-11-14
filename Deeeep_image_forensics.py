@@ -13,11 +13,17 @@ from Conv_LSTM_Conv import Conv_LSTM_Conv
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 print(DEVICE)
 
-datapath = '/home/chenfeng/Downloads/ProjectData'
-train_data = np.load(datapath + 'train.npy', allow_pickle=True, encoding='bytes')
-train_mask = np.load(datapath + 'train_mask.npy', allow_pickle=True, encoding='bytes')
-dev_data = np.load(datapath + 'dev.npy', allow_pickle=True, encoding='bytes')
-dev_mask = np.load(datapath + 'dev_mask.npy', allow_pickle=True, encoding='bytes')
+datapath = '/home/chenfeng/Downloads/ProjectData/data.npz'
+data = np.load(datapath, allow_pickle=True)
+train_data = data['train_data']
+train_label = data['train_label']
+train_mask = data['train_mask']
+val_data = data['val_data']
+val_label = data['val_label']
+val_mask = data['val_mask']
+test_data = data['test_data']
+test_label = data['test_label']
+test_mask = data['test_mask']
 
 class ForensicsDataset(Dataset):
     def __init__(self, data, label):
