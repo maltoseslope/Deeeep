@@ -33,8 +33,8 @@ class Conv_LSTM_Conv(nn.Module):
         count = 0
         for i in range(8):
             for j in range(8):
-                temp = feature_map[:, i*8:i*8 + 8,j*8:j*8 + 8].reshape((-1, 64))
-                temp2 = feature_map_flattened[count, :, :]
+                # temp = feature_map[:, i*8:i*8 + 8,j*8:j*8 + 8].reshape((-1, 64))
+                # temp2 = feature_map_flattened[count, :, :]
                 feature_map_flattened[count, :, :] = feature_map[:, i*8:i*8 + 8,j*8:j*8 + 8].reshape((-1, 64))
                 count += 1
         rnn_out = self.rnn(feature_map)[0]
